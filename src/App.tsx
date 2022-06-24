@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  Link,
+  Route,
+  Routes,
+} from 'react-router-dom'
+import './App.css'
+import Home from './pages/Home'
+import Nested from './pages/Nested'
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <nav>
+          <ul className="App-nav">
+            <li>
+              <Link
+                className="App-nav__link"
+                to="/"
+              >Home</Link>
+            </li>
+            <li>
+              <Link
+                className="App-nav__link"
+                to="/nested"
+              >Nested</Link>
+            </li>
+          </ul>
+        </nav>
       </header>
+      <Routes>
+        <Route
+          index
+          element={ <Home /> }
+        />
+        <Route
+          path="/nested"
+          element={ <Nested /> }
+        />
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
